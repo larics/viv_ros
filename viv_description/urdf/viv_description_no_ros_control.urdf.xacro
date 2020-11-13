@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="viv">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <xacro:arg name="robot_namespace" default="/" />
+    <xacro:arg name="spawn_tank" default="true" />
+
+    <link name="viv_base" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_body.dae" />
+        </geometry>
+      </visual>
+
+      <!-- collisions -->
+
+      <!--three main cylinders-->
+      <collision>
+        <origin xyz="0.34 0 0.1" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.1" length="0.45"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="-0.34 0 0.1" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.1" length="0.45"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="0 0 0.235" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.125" length="0.45"/>
+        </geometry>
+      </collision>
+      <!--mounting cylinders-->
+      <collision>
+        <origin xyz="-0.3 0 0.228" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.145" length="0.032"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="0.3 0 0.228" rpy="0 0 0" />
+        <geometry>
+          <cylinder radius="0.145" length="0.032"/>
+        </geometry>
+      </collision>
+      <!--side bars-->
+      <collision>
+        <origin xyz="0.2 -0.22 0.28" rpy="1.57079 0.349 0" />
+        <geometry>
+          <box size="0.35 0.1 0.03"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="0.2 0.22 0.28" rpy="1.57079 0.349 0" />
+        <geometry>
+          <box size="0.35 0.1 0.03"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="-0.2 -0.22 0.28" rpy="1.57079 -0.349 0" />
+        <geometry>
+          <box size="0.35 0.1 0.03"/>
+        </geometry>
+      </collision>
+      <collision>
+        <origin xyz="-0.2 0.22 0.28" rpy="1.57079 -0.349 0" />
+        <geometry>
+          <box size="0.35 0.1 0.03"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 0.2"/>
+        <mass value="50"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0" 
+                izz="1.0" />
+      </inertial>
+    </link>
+
+    <xacro:if value="$(eval spawn_tank )">
+      <link name="viv_tank" >
+        <visual>
+          <geometry>
+            <mesh filename="package://viv_description/meshes/viv_tank.dae" />
+          </geometry>
+        </visual>
+        <collision>
+          <origin xyz="0 0 0.15" rpy="0 0 0" />
+          <geometry>
+            <cylinder radius="0.165" length="0.3"/>
+          </geometry>
+        </collision>
+      </link>
+      <joint name="viv_tank_mount_joint" type="fixed">
+        <parent link="viv_base"/>
+        <child link="viv_tank"/>
+        <origin xyz="-0.295 0.0 0.242" rpy="0 0 0" />
+      </joint>
+    </xacro:if>
+
+    <!--wheels-->
+    <link name="viv_wheel_front_left" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_wheel.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.15" length="0.05"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0" 
+                izz="1.0" />
+      </inertial>
+    </link>
+
+    <link name="viv_wheel_front_right" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_wheel.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.15" length="0.05"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0" 
+                izz="1.0" />
+      </inertial>
+    </link>
+
+     <link name="viv_wheel_rear_left" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_wheel.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.15" length="0.05"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0" 
+                izz="1.0" />
+      </inertial>
+    </link>
+
+    <link name="viv_wheel_rear_right" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_wheel.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.15" length="0.05"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0"/>
+        <mass value="1"/>
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                iyy="1.0" iyz="0.0" 
+                izz="1.0" />
+      </inertial>
+    </link>
+
+    <joint name="viv_wheel_front_left_joint" type="continuous">
+			<parent link="viv_base"/>
+			<child link="viv_wheel_front_left"/>
+      <origin xyz="0.34 0.294 0.1" rpy="0 0 0" />
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+		</joint>
+    <joint name="viv_wheel_front_right_joint" type="continuous">
+			<parent link="viv_base"/>
+			<child link="viv_wheel_front_right"/>
+      <origin xyz="0.34 -0.294 0.1" rpy="0 0 0" />
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+		</joint>
+    <joint name="viv_wheel_rear_left_joint" type="continuous">
+			<parent link="viv_base"/>
+			<child link="viv_wheel_rear_left"/>
+      <origin xyz="-0.34 0.294 0.1" rpy="0 0 0" />
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+		</joint>
+    <joint name="viv_wheel_rear_right_joint" type="continuous">
+			<parent link="viv_base"/>
+			<child link="viv_wheel_rear_right"/>
+      <origin xyz="-0.34 -0.294 0.1" rpy="0 0 0" />
+			<axis xyz="0 1 0" rpy="0 0 0"/>
+		</joint>
+
+		<transmission name="viv_wheel_front_left_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="viv_wheel_front_left_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="viv_wheel_front_left_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+		<transmission name="viv_wheel_front_right_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="viv_wheel_front_right_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="viv_wheel_front_right_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+		<transmission name="viv_wheel_rear_left_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="viv_wheel_rear_left_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="viv_wheel_rear_left_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+		<transmission name="viv_wheel_rear_right_trans" type="SimpleTransmission">
+			<type>transmission_interface/SimpleTransmission</type>
+			<actuator name="viv_wheel_rear_right_motor">
+				<mechanicalReduction>1</mechanicalReduction>
+			</actuator>
+			<joint name="viv_wheel_rear_right_joint">
+				<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+			</joint>
+		</transmission>
+
+    <!--tracks-->
+    <link name="viv_track_1" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_track.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05"/>
+        </geometry>
+      </collision>
+    </link>
+    <link name="viv_track_2" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_track.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05"/>
+        </geometry>
+      </collision>
+    </link>
+     <link name="viv_track_3" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_track.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05"/>
+        </geometry>
+      </collision>
+    </link>
+    <link name="viv_track_4" >
+      <visual>
+        <geometry>
+          <mesh filename="package://viv_description/meshes/viv_track.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <geometry>
+          <cylinder radius="0.05" length="0.05"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="viv_track_1_mount_joint" type="fixed">
+      <parent link="viv_base"/>
+      <child link="viv_track_1"/>
+      <origin xyz="0.34 0.294 0.1" rpy="0 0 3.14159" />
+    </joint>
+    <joint name="viv_track_2_mount_joint" type="fixed">
+      <parent link="viv_base"/>
+      <child link="viv_track_2"/>
+      <origin xyz="0.34 -0.294 0.1" rpy="0 0 3.14159" />
+    </joint>
+    <joint name="viv_track_3_mount_joint" type="fixed">
+      <parent link="viv_base"/>
+      <child link="viv_track_3"/>
+      <origin xyz="-0.34 0.294 0.1" rpy="0 0 0" />
+    </joint>
+    <joint name="viv_track_4_mount_joint" type="fixed">
+      <parent link="viv_base"/>
+      <child link="viv_track_4"/>
+      <origin xyz="-0.34 -0.294 0.1" rpy="0 0 0" />
+    </joint>
+
+    <!--gazebo reference="viv_wheel_front_left">
+			<mu1 value="10.0"/>
+			<mu2 value="10.0"/>
+			<kp value="100000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+		</gazebo>
+    <gazebo reference="viv_wheel_front_right">
+			<mu1 value="10.0"/>
+			<mu2 value="10.0"/>
+			<kp value="100000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+		</gazebo>
+    <gazebo reference="viv_wheel_rear_left">
+			<mu1 value="10.0"/>
+			<mu2 value="10.0"/>
+			<kp value="100000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+		</gazebo>
+    <gazebo reference="viv_wheel_rear_right">
+			<mu1 value="10.0"/>
+			<mu2 value="10.0"/>
+			<kp value="100000.0" />
+			<kd value="1.0" />
+			<fdir1 value="1 0 0"/>
+		</gazebo-->
+
+    <!-- maka! -->
+    <!--gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo-->
+
+
+</robot>

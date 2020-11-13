@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!-- Start Gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="paused" value="false"/>
+    </include>
+
+    <!-- Spawn ViV with controls -->
+    <arg name="robot_namespace" default="viv"/>
+    <arg name="spawn_tank" default="true"/>
+    <arg name="x_location" default="0.0"/>
+    <arg name="y_location" default="0.0"/>
+    <arg name="z_location" default="0.1"/>
+
+    <include file="$(find viv_gazebo)/launch/spawn_viv.launch">
+        <arg name="robot_namespace" value="$(arg robot_namespace)"/>
+        <arg name="spawn_tank" value="$(arg spawn_tank)"/>
+        <arg name="x_location" value="$(arg x_location)"/>
+        <arg name="y_location" value="$(arg y_location)"/>
+        <arg name="z_location" value="$(arg z_location)"/>
+    </include>
+
+</launch>

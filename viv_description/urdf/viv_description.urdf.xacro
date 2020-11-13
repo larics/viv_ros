@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="viv">
+    <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <xacro:arg name="robot_namespace" default="/" />
+    <xacro:arg name="spawn_tank" default="true" />
+    
+    <xacro:include filename="$(find viv_description)/urdf/viv_description_no_ros_control.urdf.xacro" />
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotNamespace>$(arg robot_namespace)</robotNamespace>
+      </plugin>
+    </gazebo>
+
+
+</robot>

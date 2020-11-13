@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <!-- spawn viv -->
+    <arg name="robot_namespace" default="viv"/>
+    <arg name="spawn_tank" default="true"/>
+    <arg name="x_location" default="0.0"/>
+    <arg name="y_location" default="0.0"/>
+    <arg name="z_location" default="0.1"/>
+
+    <group ns="$(arg robot_namespace)">
+
+        <param name="robot_description" command="$(find xacro)/xacro --inorder 
+        '$(find viv_description)/urdf/viv_description.urdf.xacro' 
+        robot_namespace:=$(arg robot_namespace)
+        spawn_tank:=$(arg spawn_tank)" />
+
+        <node pkg="gazebo_ros" type="spawn_model" name="spawn_viv_model" args="
+            -urdf -param robot_description -urdf 
+            -x $(arg x_location) 
+            -y $(arg y_location) 
+            -z $(arg z_location) 
+            -model viv"/>
+
+        <rosparam file="$(find viv_control)/config/diff_drive_control.yaml" command="load" />
+        <node name="viv_diff_dive_controllers_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+            output="screen" args="velocity_controller" />
+
+        
+    </group>
+
+</launch>
