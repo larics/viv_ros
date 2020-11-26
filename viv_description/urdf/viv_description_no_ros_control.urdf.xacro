@@ -3,10 +3,10 @@
     <xacro:property name="M_PI" value="3.1415926535897931" />
 
     <xacro:arg name="robot_namespace" default="/" />
-    <xacro:arg name="spawn_tank" default="true" />
 
     <link name="viv_base" >
       <visual>
+        <origin xyz="0.0 0 0.1" rpy="0 0 0" />
         <geometry>
           <mesh filename="package://viv_description/meshes/viv_body.dae" />
         </geometry>
@@ -81,27 +81,6 @@
       </inertial>
     </link>
 
-    <xacro:if value="$(eval spawn_tank )">
-      <link name="viv_tank" >
-        <visual>
-          <geometry>
-            <mesh filename="package://viv_description/meshes/viv_tank.dae" />
-          </geometry>
-        </visual>
-        <collision>
-          <origin xyz="0 0 0.15" rpy="0 0 0" />
-          <geometry>
-            <cylinder radius="0.165" length="0.3"/>
-          </geometry>
-        </collision>
-      </link>
-      <joint name="viv_tank_mount_joint" type="fixed">
-        <parent link="viv_base"/>
-        <child link="viv_tank"/>
-        <origin xyz="-0.295 0.0 0.242" rpy="0 0 0" />
-      </joint>
-    </xacro:if>
-
     <!--wheels-->
     <link name="viv_wheel_front_left" >
       <visual>
@@ -112,7 +91,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.15" length="0.05"/>
+          <cylinder radius="0.14" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -133,7 +112,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.15" length="0.05"/>
+          <cylinder radius="0.14" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -154,7 +133,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.15" length="0.05"/>
+          <cylinder radius="0.14" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -175,7 +154,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.15" length="0.05"/>
+          <cylinder radius="0.14" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -190,25 +169,25 @@
     <joint name="viv_wheel_front_left_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_front_left"/>
-      <origin xyz="0.34 0.294 0.1" rpy="0 0 0" />
+      <origin xyz="0.35 0.3 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_front_right_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_front_right"/>
-      <origin xyz="0.34 -0.294 0.1" rpy="0 0 0" />
+      <origin xyz="0.35 -0.3 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_rear_left_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_rear_left"/>
-      <origin xyz="-0.34 0.294 0.1" rpy="0 0 0" />
+      <origin xyz="-0.35 0.3 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_rear_right_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_rear_right"/>
-      <origin xyz="-0.34 -0.294 0.1" rpy="0 0 0" />
+      <origin xyz="-0.35 -0.3 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
 
@@ -257,7 +236,7 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <origin xyz="-0.42 -0.04 -0.0" rpy="1.57079 0 0" />
         <geometry>
           <cylinder radius="0.05" length="0.05"/>
         </geometry>
@@ -270,7 +249,7 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <origin xyz="-0.42 -0.04 -0.0" rpy="1.57079 0 0" />
         <geometry>
           <cylinder radius="0.05" length="0.05"/>
         </geometry>
@@ -283,7 +262,7 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <origin xyz="-0.42 -0.04 -0.0" rpy="1.57079 0 0" />
         <geometry>
           <cylinder radius="0.05" length="0.05"/>
         </geometry>
@@ -296,7 +275,7 @@
         </geometry>
       </visual>
       <collision>
-        <origin xyz="-0.42 0.0 -0.07" rpy="1.57079 0 0" />
+        <origin xyz="-0.42 -0.04 -0.0" rpy="1.57079 0 0" />
         <geometry>
           <cylinder radius="0.05" length="0.05"/>
         </geometry>
@@ -306,22 +285,22 @@
     <joint name="viv_track_1_mount_joint" type="fixed">
       <parent link="viv_base"/>
       <child link="viv_track_1"/>
-      <origin xyz="0.34 0.294 0.1" rpy="0 0 3.14159" />
+      <origin xyz="0.34 0.27 0.1" rpy="0 0 3.14159" />
     </joint>
     <joint name="viv_track_2_mount_joint" type="fixed">
       <parent link="viv_base"/>
       <child link="viv_track_2"/>
-      <origin xyz="0.34 -0.294 0.1" rpy="0 0 3.14159" />
+      <origin xyz="0.34 -0.27 0.1" rpy="3.14159 0 3.14159" />
     </joint>
     <joint name="viv_track_3_mount_joint" type="fixed">
       <parent link="viv_base"/>
       <child link="viv_track_3"/>
-      <origin xyz="-0.34 0.294 0.1" rpy="0 0 0" />
+      <origin xyz="-0.34 0.27 0.1" rpy="3.14159 0 0" />
     </joint>
     <joint name="viv_track_4_mount_joint" type="fixed">
       <parent link="viv_base"/>
       <child link="viv_track_4"/>
-      <origin xyz="-0.34 -0.294 0.1" rpy="0 0 0" />
+      <origin xyz="-0.34 -0.27 0.1" rpy="0 0 0" />
     </joint>
 
     <!--gazebo reference="viv_wheel_front_left">
