@@ -6,7 +6,7 @@
 
     <link name="viv_base" >
       <visual>
-        <origin xyz="0.0 0 0.1" rpy="0 0 0" />
+        <origin xyz="0.0 0 0.1" rpy="0 0 3.1415926535897931" />
         <geometry>
           <mesh filename="package://viv_description/meshes/viv_body.dae" />
         </geometry>
