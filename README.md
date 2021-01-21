@@ -23,10 +23,6 @@ To launch an empty world simulation
 
 	roslaunch viv_gazebo viv_empty_world.launch  
 
-To launch an empty world simulation without the water tank
-
-    roslaunch viv_gazebo viv_empty_world.launch spawn_tank:=false
-
 ### Control
 ViV is spawned with a differential drive controller 
 
