@@ -1,4 +1,4 @@
-velocity_controller:
+viv_velocity_controller:
   type: "diff_drive_controller/DiffDriveController"
   left_wheel: ['viv_wheel_front_left_joint', 'viv_wheel_rear_left_joint']
   right_wheel: ['viv_wheel_front_right_joint', 'viv_wheel_rear_right_joint']
