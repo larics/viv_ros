@@ -91,7 +91,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.14" length="0.05"/>
+          <cylinder radius="0.08" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -112,7 +112,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.14" length="0.05"/>
+          <cylinder radius="0.08" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -133,7 +133,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.14" length="0.05"/>
+          <cylinder radius="0.08" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -154,7 +154,7 @@
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="1.57079 0 0" />
         <geometry>
-          <cylinder radius="0.14" length="0.05"/>
+          <cylinder radius="0.08" length="0.05"/>
         </geometry>
       </collision>
       <inertial>
@@ -169,25 +169,25 @@
     <joint name="viv_wheel_front_left_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_front_left"/>
-      <origin xyz="0.35 0.3 0.1" rpy="0 0 0" />
+      <origin xyz="0.35 0.325 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_front_right_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_front_right"/>
-      <origin xyz="0.35 -0.3 0.1" rpy="0 0 0" />
+      <origin xyz="0.35 -0.325 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_rear_left_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_rear_left"/>
-      <origin xyz="-0.35 0.3 0.1" rpy="0 0 0" />
+      <origin xyz="-0.35 0.325 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
     <joint name="viv_wheel_rear_right_joint" type="continuous">
 			<parent link="viv_base"/>
 			<child link="viv_wheel_rear_right"/>
-      <origin xyz="-0.35 -0.3 0.1" rpy="0 0 0" />
+      <origin xyz="-0.35 -0.325 0.1" rpy="0 0 0" />
 			<axis xyz="0 1 0" rpy="0 0 0"/>
 		</joint>
 
