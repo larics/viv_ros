@@ -22,7 +22,7 @@
 
         <rosparam file="$(find viv_control)/config/diff_drive_control.yaml" command="load" />
         <node name="viv_diff_dive_controllers_spawner" pkg="controller_manager" type="spawner" respawn="false" 
-            output="screen" args="velocity_controller" />
+            output="screen" args="viv_velocity_controller" />
 
         
     </group>
