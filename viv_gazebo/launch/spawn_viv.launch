@@ -6,12 +6,14 @@
     <arg name="x_location" default="0.0"/>
     <arg name="y_location" default="0.0"/>
     <arg name="z_location" default="0.1"/>
+    <arg name="sim" default="true"/>
 
     <group ns="$(arg robot_namespace)">
 
         <param name="robot_description" command="$(find xacro)/xacro --inorder 
         '$(find viv_description)/urdf/viv_description.urdf.xacro' 
-        robot_namespace:=$(arg robot_namespace)" />
+        robot_namespace:=$(arg robot_namespace)
+        sim:=$(arg sim)" />
 
         <node pkg="gazebo_ros" type="spawn_model" name="spawn_viv_model" args="
             -urdf -param robot_description -urdf 
