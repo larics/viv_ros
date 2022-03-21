@@ -1,5 +1,8 @@
-# ViV simulation
-Packages for Gazebo simulation of the ViV UGV developed for the [HEKTOR](https://hektor.fer.hr/) project.
+# ViV ROS
+
+Ros packages for the ViV UGV developed for the [HEKTOR](https://hektor.fer.hr/) project.
+
+Contains description, control and Gazebo packages. 
 
 ![viv1](doc/viv_pequeno_img.png)
 
