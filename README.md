@@ -1,7 +1,5 @@
 # ViV simulation
-Packages for Gazebo simulation of the ViV UGV developed for the HEKTOR project.
-
-    TODO: add link to HEKTOR website, more about hektor
+Packages for Gazebo simulation of the ViV UGV developed for the [HEKTOR](https://hektor.fer.hr/) project.
 
 ![viv1](doc/viv_pequeno_img.png)
 
