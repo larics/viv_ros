@@ -4,7 +4,7 @@
     <!-- Start Gazebo -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="paused" value="true"/>
-        <arg name="world_name" value="$(find hektor_viv_gazebo)/worlds/empty_no_shadow.world"/>
+        <arg name="world_name" value="$(find viv_gazebo)/worlds/empty_no_shadow.world"/>
     </include>
 
     <!-- Spawn ViV with controls -->
