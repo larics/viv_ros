@@ -28,7 +28,7 @@ To launch a simulator with a randomly generated vineyard:
 
 1. Navigate to viv_description/scripts
 
-2. Generate a spawn_random_vineyard.launch with generate_random_vineyard_launch 
+2. Once you are located in viv_description/scripts generate a spawn_random_vineyard.launch with generate_random_vineyard_launch 
 	
 	Example:
 
