@@ -24,6 +24,23 @@ To launch an empty world simulation
 
 	roslaunch viv_gazebo viv_empty_world.launch  
 
+To launch a simulator with a randomly generated vineyard:
+
+1. Navigate to viv_description/scripts
+
+2. Generate a spawn_random_vineyard.launch with generate_random_vineyard_launch 
+	
+	Example:
+
+		./generate_random_vineyard_launch.py 5 2  
+
+	to generate a spawn_random_vineyard.launch with 2 rows, and 5 randomly selected plant models in a single row
+
+3. Launch the simulation with:
+
+		roslaunch viv_gazebo viv_random_vineyard.launch  
+
+
 ### Control
 ViV is spawned with a differential drive controller 
 
