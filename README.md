@@ -38,7 +38,9 @@ To launch a simulator with a randomly generated vineyard:
 
 3. Launch the simulation with:
 
-		roslaunch viv_gazebo viv_random_vineyard.launch  
+		roslaunch viv_gazebo viv_random_vineyard.launch spawn_d435:=true
+
+3. Wait for all the grapevines to spawn, and unpause the simulation
 
 
 ### Control
