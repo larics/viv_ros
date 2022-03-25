@@ -1,6 +1,13 @@
 #!/usr/bin/env python
+"""
+    Script for generating random vineyard from three plant models
+    Run with:
+        ./generate_random_vineyard_launch N_plants_in_row N_rows
+"""
 import math
 import random
+import sys
+
 def spawn_model(current_n, current_grapevine_model, current_x, current_y, current_yaw):
     return \
 "    <node pkg=\"gazebo_ros\" type=\"spawn_model\" name=\"spawn_grapevine_model_"\
@@ -9,6 +16,21 @@ def spawn_model(current_n, current_grapevine_model, current_x, current_y, curren
  + str(current_x) + " -y " + str(current_y) + " -z 0.0 -Y " + str(current_yaw) + " -model grapevine_" + str(current_n) + "\"/>\n"
 
 if __name__ == '__main__':
+
+    if(len(sys.argv) > 2):
+        N_plants_in_row = int(sys.argv[1])
+        N_rows = int(sys.argv[2])
+        
+        if(N_plants_in_row <= 0):
+            raise Exception("N_plants_in_row must be 1 or greater!")
+
+        if(N_rows <= 0):
+            raise Exception("N_rows must be 1 or greater!")
+    else:
+        N_plants_in_row = 5
+        N_rows = 4
+
+
     launch_file = open("../../viv_gazebo/launch/spawn_random_vineyard.launch", "w")
 
     launch_file_header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<launch>\n"
@@ -24,8 +46,6 @@ if __name__ == '__main__':
     launch_file.write(model_descriptions)
 
 
-    N_plants_in_row = 10
-    N_rows = 4
 
     every_N_plant_pole = 5
 
