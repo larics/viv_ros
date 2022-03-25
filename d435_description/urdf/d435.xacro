@@ -60,11 +60,11 @@
                 <alwaysOn>1</alwaysOn>
                 <updateRate>0.0</updateRate>
                 <cameraName>camera_ir</cameraName>
-                <imageTopicName>/erl_husky/camera/color/image_raw</imageTopicName>
-                <cameraInfoTopicName>/erl_husky/camera/color/camera_info</cameraInfoTopicName>
-                <depthImageTopicName>/erl_husky/camera/depth/image_raw</depthImageTopicName>
-                <depthImageInfoTopicName>/erl_husky/camera/depth/camera_info</depthImageInfoTopicName>
-                <pointCloudTopicName>/erl_husky/camera/depth_registered/points</pointCloudTopicName>
+                <imageTopicName>/camera/color/image_raw</imageTopicName>
+                <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
+                <depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+                <depthImageInfoTopicName>/camera/depth/camera_info</depthImageInfoTopicName>
+                <pointCloudTopicName>/camera/depth_registered/points</pointCloudTopicName>
                 <frameName>/camera_link_depth</frameName>
                 <pointCloudCutoff>0.05</pointCloudCutoff>
                 <distortionK1>0</distortionK1>
