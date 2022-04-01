@@ -6,46 +6,47 @@ Contains description, control and Gazebo packages.
 
 ![viv1](doc/viv_pequeno_img.png)
 
-## Installation
+## 📄 Dependencies
 
-### Dependencies
-None
-### Build
+This project depends on ROS
+
+## 🛠️ Usage
+
+### ⚙️ Build the project
 
 Clone into a catkin workspace and build with
 
 	catkin build viv_gazebo
 
-## Usage
+### 🖥️ Launching the simulation
 
-### Launching simulation
+- To launch an empty world simulation:
 
-To launch an empty world simulation
+		roslaunch viv_gazebo viv_empty_world.launch  
 
-	roslaunch viv_gazebo viv_empty_world.launch  
+- To launch a simulator with a randomly generated vineyard:
 
-To launch a simulator with a randomly generated vineyard:
+	1. Navigate to viv_description/scripts
 
-1. Navigate to viv_description/scripts
-
-2. Once you are located in viv_description/scripts generate a spawn_random_vineyard.launch with generate_random_vineyard_launch 
+	2. Once you are located in viv_description/scripts generate a spawn_random_vineyard.launch with generate_random_vineyard_launch 
 	
-	Example:
+		- Example:
 
-		./generate_random_vineyard_launch.py 5 2  
+			- to generate a spawn_random_vineyard.launch with 2 rows, and 5 randomly selected plant models in a single row:
 
-	to generate a spawn_random_vineyard.launch with 2 rows, and 5 randomly selected plant models in a single row
-
-3. Launch the simulation with:
-
-		roslaunch viv_gazebo viv_random_vineyard.launch spawn_d435:=true
-
-3. Wait for all the grapevines to spawn, and unpause the simulation
+					./generate_random_vineyard_launch.py 5 2  
 
 
-### Control
-ViV is spawned with a differential drive controller 
+	3. Launch the simulation with:
 
-Velocity is commanded by publishing a Twist message to 
+			roslaunch viv_gazebo viv_random_vineyard.launch spawn_d435:=true
+
+	4. Wait for all the grapevines to spawn, and unpause the simulation
+
+
+### 🚜 Control
+ViV is spawned with a ROS [differential drive controller](http://wiki.ros.org/diff_drive_controller) 
+
+- Velocity is commanded by publishing a Twist message to 
    
-    /viv/velocity_controller/cmd_vel
+    	/viv/velocity_controller/cmd_vel
