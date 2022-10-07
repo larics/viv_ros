@@ -6,10 +6,6 @@ Contains description, control and Gazebo packages.
 
 <img src="doc/viv_driving_1_transparent.png" width="800">
 
-## 📄 Dependencies
-
-This project depends on ROS
-
 ## 🛠️ Usage
 
 ### ⚙️ Build the project
