@@ -1,0 +1,12 @@
+<launch>
+    <group ns="viv">
+        <node name="viv_epos_driver_ros" pkg="epos_driver_ros" type="viv_epos_driver_ros.py" output="log"/>
+
+        <node name="viv_base" pkg="viv_base" type="viv_base" output="screen" />
+
+
+        <include file="$(find viv_control)/launch/viv_control.launch" />
+        <include file="$(find viv_base)/launch/teleop.launch" />
+        <!--include file="$(find viv_base)/launch/viv_sensors.launch" /-->
+    </group>
+</launch>

@@ -1,0 +1,52 @@
+<launch>
+
+	<node pkg="rosbag" type="record" name="record"
+		args="/viv/D435/camera/color/camera_info 
+			/viv/D435/camera/color/image_raw/compressed 
+			/viv/D435/camera/depth/camera_info 
+			/viv/D435/camera/depth/image_rect_raw
+			/viv/D435/camera/depth/image_rect_raw/compressedDepth 
+			/viv/T265/camera/accel/imu_info 
+			/viv/T265/camera/accel/metadata 
+			/viv/T265/camera/accel/sample 
+			/viv/T265/camera/fisheye1/camera_info 
+			/viv/T265/camera/fisheye1/image_raw/compressed 
+			/viv/T265/camera/fisheye1/metadata 
+			/viv/T265/camera/gyro/imu_info
+			/viv/T265/camera/gyro/metadata
+			/viv/T265/camera/gyro/sample
+			/viv/T265/camera/odom/metadata
+			/viv/T265/camera/odom/sample
+			/viv/T265/camera/realsense2_camera_manager/bond
+			/viv/T265/camera/tracking_module/parameter_descriptions
+			/viv/T265/camera/tracking_module/parameter_updates
+			/viv/mavros/imu/data
+			/viv/mavros/imu/data_raw
+			/viv/mavros/imu/diff_pressure
+			/viv/mavros/imu/mag
+			/viv/mavros/imu/static_pressure
+			/viv/mavros/imu/temperature_baro
+			/viv/mavros/imu/temperature_imu
+			/viv/mavros/global_position/raw/fix
+			/viv/mavros/global_position/global
+			/viv/mavros/global_position/local
+			/viv/mavros/global_position/raw/gps_vel
+			/viv/mavros/global_position/raw/satellites
+			/viv/mavros/state
+			/rslidar_points
+			/viv/viv_epos_driver/joint_state
+			/viv/viv_epos_driver/motor_current
+			/viv/viv_epos_driver/motor_current_averaged
+			/viv/viv_epos_driver/motor_velocities
+			/viv/viv_velocity_controller/cmd_vel
+			/viv/viv_velocity_controller/odom
+			/viv/joy_teleop/cmd_vel
+			/viv/joy_teleop/joy
+			/battery_current_sensor_reading
+			/battery_voltage_sensor_reading
+			/diagnostics
+			/tf
+			/tf_static"
+			output="screen"/>
+ 
+</launch>

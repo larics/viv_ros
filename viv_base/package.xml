@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package>
+  <name>viv_base</name>
+  <version>0.0.0</version>
+  <description>
+    viv_base
+  </description>
+  <author email="ivo.vatavuk@fer.hr">Ivo Vatavuk</author>
+  <maintainer email="ivo.vatavuk@fer.hr">Ivo Vatavuk</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>hardware_interface</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>viv_control</build_depend>
+  <build_depend>viv_description</build_depend>
+  <build_depend>epos_driver_ros</build_depend>
+
+  <run_depend>controller_manager</run_depend>
+  <run_depend>hardware_interface</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>roslaunch</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+
+
+  <export>
+  </export>
+
+</package>
