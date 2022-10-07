@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(viv_base)
 
-#add_definitions(-std=c++11)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_compile_options(-Wall -Wextra)
 
 find_package(catkin REQUIRED COMPONENTS controller_manager hardware_interface
    roslaunch roslint roscpp sensor_msgs)
