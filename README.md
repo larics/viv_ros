@@ -4,7 +4,7 @@ Ros packages for the ViV UGV developed for the [HEKTOR](https://hektor.fer.hr/) 
 
 Contains description, control and Gazebo packages. 
 
-![viv1](doc/viv_pequeno_img.png)
+<img src="doc/viv_driving_1_transparent.png" width="800">
 
 ## 📄 Dependencies
 

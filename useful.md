@@ -1,6 +1,6 @@
 # ViV useful commands
 
-![viv1](doc/viv_pequeno_img.png)
+<img src="doc/viv_driving_1_transparent.png" width="800">
 
 ## First terminal (ViV)
 ssh
