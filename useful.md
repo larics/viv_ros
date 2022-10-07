@@ -12,6 +12,9 @@ to restart viv_base
     killall -9 rosmaster
 
     roslaunch viv_base viv_base.launch
+    roslaunch viv_base viv_sensors.launch
+    rosrun mavros mavsys -n viv/mavros rate --all 50
+
 
 Now you should be able to drive around with a joystick
 
@@ -28,6 +31,12 @@ If its UP run:
 If its DOWN, run:
 
     sudo ip link set can0 up type can bitrate 125000  
+
+### For bagging
+saves bags in ~/.ros folder!!!
+
+    roslaunch viv_base viv_bag.launch
+
 
 ## Second terminal (local)
 Remote master
