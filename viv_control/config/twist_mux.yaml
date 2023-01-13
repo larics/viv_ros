@@ -10,6 +10,14 @@ topics:
 - name    : external
   topic   : cmd_vel
   timeout : 0.5
+  priority: 2
+- name    : spraying_mpc
+  topic   : spraying_mpc/cmd_vel
+  timeout : 0.5
+  priority: 1
+- name    : move_base
+  topic   : move_base/cmd_vel
+  timeout : 0.5
   priority: 1
 locks:
 - name    : e_stop

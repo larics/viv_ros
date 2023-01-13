@@ -12,9 +12,9 @@ obstacle_range: 5.5
 raytrace_range: 6.0
 
 #layer definitions
-static:
-    map_topic: /map
-    subscribe_to_updates: true
+#static:
+#    map_topic: /map
+#    subscribe_to_updates: false
 
 obstacles_laser:
     observation_sources: laser
