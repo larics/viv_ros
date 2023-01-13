@@ -17,6 +17,7 @@ void controlLoop(viv_base::VivHardware &viv,
   last_time = this_time;
 
   // Process control loop
+  viv.updateJointsFromHardware();
   cm.update(ros::Time::now(), elapsed);
   viv.writeCommandsToHardware();
 }

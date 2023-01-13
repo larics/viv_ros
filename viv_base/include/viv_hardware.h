@@ -8,6 +8,7 @@
 #include <string>
 
 #include "std_msgs/Float64MultiArray.h"
+#include "sensor_msgs/JointState.h"
 
 namespace viv_base {
 class VivHardware : public hardware_interface::RobotHW
@@ -17,11 +18,16 @@ public:
   VivHardware(ros::NodeHandle nh, ros::NodeHandle private_nh);
 
   void writeCommandsToHardware();
+  void updateJointsFromHardware();
+
+  double linearToAngular(const double &data) const;
 
 private:
 
   void registerControlInterfaces();
   static double radps_to_rpm(double vel_radps);
+
+  void encoderCallback(const sensor_msgs::JointStatePtr& msg);
 
   ros::NodeHandle nh_, private_nh_;
 
@@ -49,7 +55,9 @@ private:
     { }
   } joints_[4];
 
+  std::array<double, 4> enc_in_meters_;
   ros::Publisher velocity_command_pub_;
+  ros::Subscriber epos_enc_sub_;
 };
 
 } // namespace viv_base
