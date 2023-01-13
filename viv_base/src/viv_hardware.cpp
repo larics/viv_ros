@@ -45,61 +45,12 @@ double VivHardware::radps_to_rpm(double vel_radps) {
 
 void VivHardware::updateJointsFromHardware()
 {
-  //horizon_legacy::Channel<clearpath::DataEncoders>::Ptr enc;
-  //enc = horizon_legacy::Channel<clearpath::DataEncoders>::requestData(
-  //  polling_timeout_);
-  /*if (enc)
-  {
-    ROS_DEBUG_STREAM("Received travel information (L:" << enc->getTravel(LEFT)
-        << " R:" << enc->getTravel(RIGHT) << ")");
-        */
-  //for (int i = 0; i < 4; i++)
-  //{
-    //for(int i = 0; i < 9999; i++)
-    //  std::cout << "POZICIJEEE\n";
+  if(!loaded_pos_offset_) return;
 
-    joints_[0].position = linearToAngular(enc_in_meters_[0]);
-    joints_[1].position = linearToAngular(enc_in_meters_[1]);
-    joints_[2].position = linearToAngular(enc_in_meters_[2]);
-    joints_[3].position = linearToAngular(enc_in_meters_[3]);
-    
-    /*double delta = linearToAngular(enc->getTravel(i % 2)) - joints_[i].position - joints_[i].position_offset;
-
-    // detect suspiciously large readings, possibly from encoder rollover
-    if (std::abs(delta) < 1.0)
-    {
-      joints_[i].position += delta;
-    }
-    else
-    {
-      // suspicious! drop this measurement and update the offset for subsequent readings
-      joints_[i].position_offset += delta;
-      ROS_DEBUG("Dropping overflow measurement from encoder");
-    }
-    */
-  //}
-  /*
-  }
-
-  horizon_legacy::Channel<clearpath::DataDifferentialSpeed>::Ptr speed;
-  speed = horizon_legacy::Channel<clearpath::DataDifferentialSpeed>::requestData(polling_timeout_);
-  if (speed)
-  {
-    ROS_DEBUG_STREAM("Received linear speed information (L:" << speed->getLeftSpeed()
-        << " R:" << speed->getRightSpeed() << ")");
-    for (int i = 0; i < 4; i++)
-    {
-      if (i % 2 == LEFT)
-      {
-        joints_[i].velocity = linearToAngular(speed->getLeftSpeed());
-      }
-      else
-      { // assume RIGHT
-        joints_[i].velocity = linearToAngular(speed->getRightSpeed());
-      }
-    }
-  }
-  */
+  joints_[0].position = linearToAngular(enc_in_meters_[0]) - joints_[0].position_offset;
+  joints_[1].position = linearToAngular(enc_in_meters_[1]) - joints_[1].position_offset;
+  joints_[2].position = linearToAngular(enc_in_meters_[2]) - joints_[2].position_offset;
+  joints_[3].position = linearToAngular(enc_in_meters_[3]) - joints_[3].position_offset;
 }
 
 /*
@@ -127,12 +78,20 @@ double VivHardware::linearToAngular(const double &data) const
 
 void VivHardware::encoderCallback(const sensor_msgs::JointStatePtr& msg)
 {
-
   auto coeff = 1.315538133e-6; //num of meters per one encoder beat
   enc_in_meters_[0] = coeff * msg->position[0];
   enc_in_meters_[1] = -coeff * msg->position[2];
   enc_in_meters_[2] = coeff * msg->position[3];
   enc_in_meters_[3] = -coeff * msg->position[1];
+
+  if(!loaded_pos_offset_)
+  {
+    joints_[0].position_offset = linearToAngular(enc_in_meters_[0]);
+    joints_[1].position_offset = linearToAngular(enc_in_meters_[1]);
+    joints_[2].position_offset = linearToAngular(enc_in_meters_[2]);
+    joints_[3].position_offset = linearToAngular(enc_in_meters_[3]);
+    loaded_pos_offset_ = true;
+  }
 }
 
 }  // namespace viv_base

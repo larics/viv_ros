@@ -25,6 +25,7 @@ public:
 private:
 
   void registerControlInterfaces();
+  void resetTravelOffset();
   static double radps_to_rpm(double vel_radps);
 
   void encoderCallback(const sensor_msgs::JointStatePtr& msg);
@@ -58,6 +59,8 @@ private:
   std::array<double, 4> enc_in_meters_;
   ros::Publisher velocity_command_pub_;
   ros::Subscriber epos_enc_sub_;
+
+  bool loaded_pos_offset_ = false;
 };
 
 } // namespace viv_base
