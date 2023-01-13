@@ -341,6 +341,13 @@
 			<kd value="1.0" />
 			<fdir1 value="1 0 0"/>
 		</gazebo-->
+    <link name="rslidar"/>
+    
+    <joint name="viv_rslidar_mount" type="fixed">
+      <parent link="viv_base"/>
+      <child link="rslidar"/>
+      <origin xyz="0 0 0.5" rpy="0 0 0" />
+    </joint>
 
     <!-- maka! -->
     <!--gazebo>
