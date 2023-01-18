@@ -5,6 +5,8 @@
     <xacro:arg name="robot_namespace" default="/" />
     <xacro:arg name="sim" default="true" />
     <xacro:property name="sim" value="$(arg sim)" />
+    <xacro:arg name="spawn_d435" default="true" />
+    <xacro:property name="spawn_d435" value="$(arg spawn_d435)" />
     <!--xacro:property name="wheel_radius" value="1" /-->
 
     <xacro:if value="${sim}">
@@ -348,6 +350,28 @@
       <child link="rslidar"/>
       <origin xyz="0 0 0.5" rpy="0 0 0" />
     </joint>
+
+
+    <xacro:if value="${spawn_d435}">
+      <xacro:include filename="$(find d435_description)/urdf/d435.xacro" />
+
+      <joint name="front_camera_joint" type="fixed">
+        <parent link="viv_base"/>
+        <child link="camera_link"/>
+        <origin xyz="${-0.23 + 0.6} 0.2 0.35" rpy="0 0 0" />
+      </joint>
+
+
+      <link name="camera_holder_link"/>
+
+      <joint name="camera_holder_joint" type="fixed">
+        <parent link="viv_base"/>
+        <child link="camera_holder_link"/>
+        <origin xyz="0.0 0.0 0.1" rpy="0 0 0" />
+      </joint>
+    </xacro:if>
+
+
 
     <!-- maka! -->
     <!--gazebo>

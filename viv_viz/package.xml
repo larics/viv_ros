@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package>
+  <name>viv_viz</name>
+  <version>0.5.0</version>
+  <description>Visualization configuration for VIVy</description>
+
+  <author email="ivan.hrabar@fer.hr">Ivan Hrabar</author>
+  <maintainer email="ivan.hrabar@fer.hr">Ivan Hrabar</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roslaunch</build_depend>
+
+  <run_depend>viv_description</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>joint_state_publisher_gui</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>rviz_imu_plugin</run_depend>
+
+  <export>
+  </export>
+</package>
