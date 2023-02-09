@@ -5,6 +5,8 @@
     <xacro:arg name="robot_namespace" default="/" />
     <xacro:arg name="sim" default="true" />
     <xacro:property name="sim" value="$(arg sim)" />
+    <xacro:arg name="spawn_d435" default="true" />
+    <xacro:property name="spawn_d435" value="$(arg spawn_d435)" />
     <!--xacro:property name="wheel_radius" value="1" /-->
 
     <xacro:if value="${sim}">

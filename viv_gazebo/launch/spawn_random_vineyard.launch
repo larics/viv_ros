@@ -4,29 +4,29 @@
     <param name="grapevine_2_description" command="$(find xacro)/xacro --inorder '$(find viv_description)/urdf/grapevines/grapevine2.urdf.xacro'" />
     <param name="grapevine_3_description" command="$(find xacro)/xacro --inorder '$(find viv_description)/urdf/grapevines/grapevine3.urdf.xacro'" />
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_1" args="-urdf -param /grapevine_3_description -urdf -x 2.0 -y -1.0 -z 0.0 -Y 1.57079632679 -model grapevine_1"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_2" args="-urdf -param /grapevine_2_description -urdf -x 3.0 -y -1.0 -z 0.0 -Y 1.57079632679 -model grapevine_2"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_3" args="-urdf -param /grapevine_3_description -urdf -x 4.0 -y -1.0 -z 0.0 -Y 1.57079632679 -model grapevine_3"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_4" args="-urdf -param /grapevine_3_description -urdf -x 5.0 -y -1.0 -z 0.0 -Y 1.57079632679 -model grapevine_4"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_5" args="-urdf -param /grapevine_3_description -urdf -x 6.0 -y -1.0 -z 0.0 -Y 1.57079632679 -model grapevine_5"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_1" args="-urdf -param /grapevine_3_description -urdf -x 2.0 -y -1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_1"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_2" args="-urdf -param /grapevine_3_description -urdf -x 3.0 -y -1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_2"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_3" args="-urdf -param /grapevine_3_description -urdf -x 4.0 -y -1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_3"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_4" args="-urdf -param /grapevine_1_description -urdf -x 5.0 -y -1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_4"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_5" args="-urdf -param /grapevine_2_description -urdf -x 6.0 -y -1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_5"/>
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_6" args="-urdf -param /grapevine_1_description -urdf -x 2.0 -y 1.0 -z 0.0 -Y 1.57079632679 -model grapevine_6"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_7" args="-urdf -param /grapevine_1_description -urdf -x 3.0 -y 1.0 -z 0.0 -Y 1.57079632679 -model grapevine_7"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_8" args="-urdf -param /grapevine_1_description -urdf -x 4.0 -y 1.0 -z 0.0 -Y 1.57079632679 -model grapevine_8"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_9" args="-urdf -param /grapevine_1_description -urdf -x 5.0 -y 1.0 -z 0.0 -Y 1.57079632679 -model grapevine_9"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_10" args="-urdf -param /grapevine_1_description -urdf -x 6.0 -y 1.0 -z 0.0 -Y 1.57079632679 -model grapevine_10"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_6" args="-urdf -param /grapevine_3_description -urdf -x 2.0 -y 1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_6"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_7" args="-urdf -param /grapevine_3_description -urdf -x 3.0 -y 1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_7"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_8" args="-urdf -param /grapevine_1_description -urdf -x 4.0 -y 1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_8"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_9" args="-urdf -param /grapevine_3_description -urdf -x 5.0 -y 1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_9"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_10" args="-urdf -param /grapevine_1_description -urdf -x 6.0 -y 1.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_10"/>
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_11" args="-urdf -param /grapevine_3_description -urdf -x 2.0 -y 3.0 -z 0.0 -Y 1.57079632679 -model grapevine_11"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_12" args="-urdf -param /grapevine_1_description -urdf -x 3.0 -y 3.0 -z 0.0 -Y 1.57079632679 -model grapevine_12"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_13" args="-urdf -param /grapevine_1_description -urdf -x 4.0 -y 3.0 -z 0.0 -Y 1.57079632679 -model grapevine_13"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_14" args="-urdf -param /grapevine_1_description -urdf -x 5.0 -y 3.0 -z 0.0 -Y 1.57079632679 -model grapevine_14"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_15" args="-urdf -param /grapevine_3_description -urdf -x 6.0 -y 3.0 -z 0.0 -Y 1.57079632679 -model grapevine_15"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_11" args="-urdf -param /grapevine_1_description -urdf -x 2.0 -y 3.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_11"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_12" args="-urdf -param /grapevine_1_description -urdf -x 3.0 -y 3.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_12"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_13" args="-urdf -param /grapevine_1_description -urdf -x 4.0 -y 3.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_13"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_14" args="-urdf -param /grapevine_1_description -urdf -x 5.0 -y 3.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_14"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_15" args="-urdf -param /grapevine_2_description -urdf -x 6.0 -y 3.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_15"/>
 
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_16" args="-urdf -param /grapevine_3_description -urdf -x 2.0 -y 5.0 -z 0.0 -Y 1.57079632679 -model grapevine_16"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_17" args="-urdf -param /grapevine_1_description -urdf -x 3.0 -y 5.0 -z 0.0 -Y 1.57079632679 -model grapevine_17"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_18" args="-urdf -param /grapevine_3_description -urdf -x 4.0 -y 5.0 -z 0.0 -Y 1.57079632679 -model grapevine_18"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_19" args="-urdf -param /grapevine_1_description -urdf -x 5.0 -y 5.0 -z 0.0 -Y 1.57079632679 -model grapevine_19"/>
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_20" args="-urdf -param /grapevine_3_description -urdf -x 6.0 -y 5.0 -z 0.0 -Y 1.57079632679 -model grapevine_20"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_16" args="-urdf -param /grapevine_1_description -urdf -x 2.0 -y 5.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_16"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_17" args="-urdf -param /grapevine_2_description -urdf -x 3.0 -y 5.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_17"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_18" args="-urdf -param /grapevine_2_description -urdf -x 4.0 -y 5.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_18"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_19" args="-urdf -param /grapevine_3_description -urdf -x 5.0 -y 5.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_19"/>
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_grapevine_model_20" args="-urdf -param /grapevine_3_description -urdf -x 6.0 -y 5.0 -z 0.0 -Y 1.5707963267948966 -model grapevine_20"/>
 
 </launch>
    
