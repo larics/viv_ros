@@ -1,6 +1,6 @@
 <launch>
     <group ns="viv">
-		<include file="$(find mavros)/launch/px4.launch" />
+		<!--<include file="$(find mavros)/launch/px4.launch" />
 
 		<include file="$(find rslidar_sdk)/launch/start.launch"/>
 		
@@ -8,17 +8,31 @@
 			<include file="$(find realsense2_camera)/launch/rs_t265.launch">
 				<param name="fisheye_width"       value="-1"/> 
 				<param name="fisheye_height"      value="-1"/>
-				<param name="enable_fisheye1"     value="true"/>
+				<param name="enable_fisheye1"     value="false"/>
 				<param name="enable_fisheye2"     value="false"/>
 			</include>
 		</group>
-
-		<group ns="D435">
-			<include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
-		</group>
+    -->
 		
+    <group ns="realsense">
+			<include file="$(find realsense2_camera)/launch/rs_d435_camera.launch">
+				<param name="camera" value="d435"/>			
+			</include>
+		</group> 
+		
+		
+		<!--
 		<node name="viv_rosserial" pkg="rosserial_python" type="serial_node.py">
 			<param name="port" value="/dev/ttyUSB0"/>
 		</node>
+		-->
+		<!--
+		<group ns="realsense">
+			<include file="$(find realsense2_camera)/launch/rs_d400_and_t265.launch">
+				<param name="enable_fisheye"     value="false"/>
+
+			</include>
+		</group>
+		-->
 	</group>
 </launch>

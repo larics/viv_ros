@@ -349,6 +349,14 @@
       <origin xyz="0 0 0.5" rpy="0 0 0" />
     </joint>
 
+    <link name="d435_camera_link"/>
+
+    <joint name="d435_mount" type="fixed">
+      <parent link="viv_base"/>
+      <child link="d435_camera_link"/>
+      <origin xyz="${-0.23 + 0.6} -0.2 0.35" rpy="0 0 0" />
+    </joint>
+
     <!-- maka! -->
     <!--gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
