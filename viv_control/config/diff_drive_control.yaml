@@ -10,7 +10,7 @@ viv_velocity_controller:
   # Base frame_id
   base_frame_id: viv_base
 
-  enable_odom_tf: true
+  enable_odom_tf: false
 
   estimate_velocity_from_position: false
 
