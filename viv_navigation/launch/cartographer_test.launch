@@ -1,0 +1,21 @@
+<launch>
+   
+  <!--node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_2d.rviz" /-->
+  <!--param name="robot_description" textfile="$(find erl_husky)/config/husky.urdf" />-->
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find viv_navigation)/config
+          -configuration_basename viv.lua"
+      output="screen">
+  <!--param name="map_topic" value="/map" /-->
+
+    <remap from="imu" to="mavros/imu/data" />
+    <remap from="points2" to="rslidar_points" />
+    <remap from="odom" to="viv/viv_velocity_controller/odom" />
+    <remap from="fix" to="mavros/global_position/global" />
+    <!--remap from="/tf" to="tf_cartographer"/-->
+  </node>
+
+  <node name="occupancy_grid_node" pkg="cartographer_ros" type="cartographer_occupancy_grid_node"/>
+</launch>
