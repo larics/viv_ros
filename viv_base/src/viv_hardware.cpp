@@ -79,7 +79,7 @@ double VivHardware::linearToAngular(const double &data) const
 void VivHardware::encoderCallback(const sensor_msgs::JointStatePtr& msg)
 {
   auto coeff = 1.315538133e-6; //num of meters per one encoder beat
-  coeff = coeff * 0.2; //Odometry tuning
+  coeff = coeff * 1.0; //Odometry tuning
   enc_in_meters_[0] = coeff * msg->position[0];
   enc_in_meters_[1] = -coeff * msg->position[2];
   enc_in_meters_[2] = coeff * msg->position[3];
