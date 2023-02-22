@@ -1,0 +1,41 @@
+<launch>
+
+	<node pkg="rosbag" type="record" name="record"
+		args="	--topic /camera/color/image_raw/compressed
+			--topic /detected_objects_in_image
+			--topic /detections_image_topic
+			--topic /diagnostics
+			--topic /initialpose
+			--topic /move_base/NavfnROS/plan
+			--topic /move_base/TrajectoryPlannerROS/local_plan
+			--topic /move_base/current_goal
+			--topic /move_base/local_costmap/costmap
+			--topic /move_base/status
+			--topic /move_base_simple/goal
+			--topic /rslidar_points
+			--topic /tf
+			--topic /tf_static
+			--topic /trunk_loc
+			--topic /viv/D435/color/camera_info
+			--topic /viv/cmd_vel
+			--topic /viv/joint_states
+			--topic /viv/move_base/cmd_vel
+			--topic /viv/realsense/d435_camera/color/camera_info
+			--topic /viv/realsense/d435_camera/color/image_raw/compressed
+			--topic /viv/realsense/d435_camera/color/metadata
+			--topic /viv/realsense/d435_camera/depth/camera_info
+			--topic /viv/realsense/d435_camera/depth/color/points
+			--topic /viv/scan
+			--topic /viv/twist_marker_server/cmd_vel
+			--topic /viv/viv_epos_driver/joint_state
+			--topic /viv/viv_epos_driver/motor_current
+			--topic /viv/viv_epos_driver/motor_current_averaged
+			--topic /viv/viv_epos_driver/motor_velocities
+			--topic /viv/viv_velocity_controller/cmd_vel
+			--topic /viv/viv_velocity_controller/cmd_vel_out
+			--topic /viv/viv_velocity_controller/odom
+			--topic /viv/viv_velocity_controller/parameter_descriptions
+			--topic /viv/viv_velocity_controller/parameter_updates"
+			output="screen"/>
+ 
+</launch>
