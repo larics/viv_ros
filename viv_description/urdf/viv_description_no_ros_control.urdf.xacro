@@ -359,6 +359,14 @@
       <origin xyz="${-0.23 + 0.6} -0.2 0.35" rpy="0 0 0" />
     </joint>
 
+    <link name="base_link"/>
+    
+    <joint name="mavros_base_link_mount" type="fixed">
+      <parent link="base_link"/>
+      <child link="viv_base"/>
+      <origin xyz="0 0 -0.55" rpy="0 0 0" />
+    </joint>
+
     <!-- maka! -->
     <!--gazebo>
       <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
