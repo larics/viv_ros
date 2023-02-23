@@ -3,5 +3,6 @@
 <launch>
   <include file="$(find viv_navigation)/launch/viv_cartographer.launch"/>
   <include file="$(find viv_navigation)/launch/move_base_3d.launch"/>
+  <node pkg="viv_navigation" type="move_base_tf_republisher.py" name="move_base_tf_republisher" output="screen"/>
   <include file="$(find viv_navigation)/launch/pointcloud_to_laserscan.launch"/>
 </launch>
