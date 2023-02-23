@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+  <include file="$(find viv_navigation)/launch/viv_cartographer.launch"/>
+  <include file="$(find viv_navigation)/launch/move_base_3d.launch"/>
+  <include file="$(find viv_navigation)/launch/pointcloud_to_laserscan.launch"/>
+</launch>
