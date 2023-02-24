@@ -11,7 +11,7 @@
     <arg name="robot_namespace" default="viv"/>
     <arg name="x_location" default="0.0"/>
     <arg name="y_location" default="0.0"/>
-    <arg name="z_location" default="0.1"/>
+    <arg name="z_location" default="1.1"/>
 
     <include file="$(find viv_gazebo)/launch/spawn_viv.launch">
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
