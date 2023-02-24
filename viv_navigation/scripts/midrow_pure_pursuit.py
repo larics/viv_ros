@@ -41,6 +41,7 @@ class midrow_pure_pursuit:
     self.new_pure_pursuit_point_rec = False
 
     self.direction = "RIGHT"
+    self.goal_sent = False
 
   def midline_callback(self, msg):
     self.pure_pursuit_point = msg.point
@@ -70,7 +71,8 @@ class midrow_pure_pursuit:
       self.state = "CARTOGRAPHER_NAV"
 
   def cartographer_nav_loop(self):
-    if(self.direction == "LEFT"):
+    print("self.direction = ", self.direction)
+    if(self.direction == "LEFT" and not self.goal_sent):
       msg = PoseStamped()
       msg.header.frame_id = "rslidar"
       msg.header.stamp = rospy.Time.now()
@@ -82,8 +84,11 @@ class midrow_pure_pursuit:
       msg.pose.orientation.x = desired_quaternion[1]
       msg.pose.orientation.y = desired_quaternion[2]
       msg.pose.orientation.z = desired_quaternion[3]
+      self.direction = "RIGHT"
       self.move_base_goal_pub.publish(msg)
-    if(self.direction == "RIGHT"):
+      self.goal_sent = True
+
+    if(self.direction == "RIGHT" and not self.goal_sent):
       msg = PoseStamped()
       msg.header.frame_id = "rslidar"
       msg.header.stamp = rospy.Time.now()
@@ -95,10 +100,13 @@ class midrow_pure_pursuit:
       msg.pose.orientation.x = desired_quaternion[1]
       msg.pose.orientation.y = desired_quaternion[2]
       msg.pose.orientation.z = desired_quaternion[3]
+      self.direction = "LEFT"
       self.move_base_goal_pub.publish(msg)
+      self.goal_sent = True
 
-    time.sleep(4)
+    time.sleep(10)
     self.state = "MIDROW_NAV"
+    self.goal_sent = False
 
   def loop(self):
     while not rospy.is_shutdown():
