@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<launch>
+  <node pkg="viv_navigation" type="gazebo_odom_sim.py" name="gazebo_odom_sim" output="screen"/>
+  <include file="$(find viv_navigation)/launch/move_base_mapless_demo_sim.launch"/>
+  <include file="$(find viv_navigation)/launch/pointcloud_to_laserscan_sim.launch"/>
+</launch>
