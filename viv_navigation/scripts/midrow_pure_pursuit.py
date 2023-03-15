@@ -43,6 +43,8 @@ class midrow_pure_pursuit:
     self.min_front_vel = 0.1
     self.max_front_vel = 0.25
 
+    self.row_width = 1.7
+
     self.move_base_goal_pub = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
     
     self.reached_end_of_row = False
@@ -108,6 +110,7 @@ class midrow_pure_pursuit:
                                                 rospy.Duration(1.0))
     if(self.entered_cart_nav_first_time):
       print("tu smo")
+      self.row_width = abs(self.right_row_enter_point.y - self.this_row_enter_point.y)
       del self.goal_list[:]
       print(self.goal_list)
       msg = PoseStamped()
@@ -137,7 +140,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 4
+        msg.pose.position.x = self.this_row_enter_point.x + 3
         msg.pose.position.y = self.this_row_enter_point.y + 0
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, (180 - 45) * 3.14159 / 180.0)
@@ -150,7 +153,7 @@ class midrow_pure_pursuit:
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
         msg.pose.position.x = self.this_row_enter_point.x + 1
-        msg.pose.position.y = self.this_row_enter_point.y + 2
+        msg.pose.position.y = self.this_row_enter_point.y + self.row_width
         msg.pose.position.z = self.this_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, 180 * 3.14159 / 180.0)
         msg.pose.orientation.w = desired_quaternion[0]
@@ -158,7 +161,8 @@ class midrow_pure_pursuit:
         msg.pose.orientation.y = desired_quaternion[2]
         msg.pose.orientation.z = desired_quaternion[3]
       if(self.direction == "LEFT"):
-        msg.pose.position.x = self.left_row_enter_point.x + 1
+        print("Left not implemented!")
+        """msg.pose.position.x = self.left_row_enter_point.x + 1
         msg.pose.position.y = self.left_row_enter_point.y + 1
         msg.pose.position.z = self.left_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, -90 * 3.14159 / 180.0)
@@ -177,7 +181,7 @@ class midrow_pure_pursuit:
         msg.pose.orientation.w = desired_quaternion[0]
         msg.pose.orientation.x = desired_quaternion[1]
         msg.pose.orientation.y = desired_quaternion[2]
-        msg.pose.orientation.z = desired_quaternion[3]
+        msg.pose.orientation.z = desired_quaternion[3]"""
       
       transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
       msg = transformed_pose
