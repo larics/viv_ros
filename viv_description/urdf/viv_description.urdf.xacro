@@ -7,7 +7,7 @@
     <xacro:arg name="sim" default="false" />
     <xacro:property name="sim" value="$(arg sim)" />
     <xacro:arg name="spawn_d435" default="false" />
-    <xacro:arg name="spawn_velodyne" default="true" />
+    <xacro:arg name="spawn_velodyne" default="false" />
     <xacro:property name="spawn_d435" value="$(arg spawn_d435)" />
     <xacro:property name="spawn_velodyne" value="$(arg spawn_velodyne)" />
 
