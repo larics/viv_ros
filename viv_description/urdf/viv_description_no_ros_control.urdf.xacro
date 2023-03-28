@@ -351,13 +351,14 @@
       <origin xyz="0 0 0.5" rpy="0 0 0" />
     </joint>
 
-    <link name="d435_camera_link"/>
+    <link name="d435_front_link"/>
 
     <joint name="d435_mount" type="fixed">
       <parent link="viv_base"/>
-      <child link="d435_camera_link"/>
-      <origin xyz="${-0.23 + 0.6} -0.2 0.35" rpy="0 0 0" />
+      <child link="d435_front_link"/>
+      <origin xyz="0.407121 ${0.209 - 0.015} 0.3327" rpy="0 0 0" />
     </joint>
+
 
     <link name="base_link"/>
     
