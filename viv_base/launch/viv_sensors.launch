@@ -15,8 +15,7 @@
     -->
 		
     <group ns="realsense">
-			<include file="$(find realsense2_camera)/launch/rs_d435_camera.launch">
-				<param name="camera" value="d435"/>			
+			<include file="$(find realsense2_camera)/launch/rs_two_d435.launch">		
 			</include>
 		</group> 
 		
