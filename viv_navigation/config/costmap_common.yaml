@@ -18,7 +18,7 @@ raytrace_range: 6.0
 
 obstacles_laser:
     observation_sources: laser
-    laser: {data_type: LaserScan, clearing: true, marking: true, topic: /viv/scan, inf_is_valid: true}
+    laser: {data_type: LaserScan, clearing: true, marking: true, topic: /viv/move_base_scan, inf_is_valid: true}
 
 inflation:
     inflation_radius: 0.3
