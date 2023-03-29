@@ -54,7 +54,7 @@ class midrow_pure_pursuit:
     self.new_pure_pursuit_point_rec = False
     self.move_base_result = False
 
-    self.direction = "RIGHT"
+    self.direction = "LEFT"
     self.goal_sent = False
 
     self.current_nav_goal = 0
@@ -111,6 +111,7 @@ class midrow_pure_pursuit:
       self.cmd_vel_pub.publish(cmd_vel)
     elif(self.front_distance_to_end < 1.0):
       self.state = "CARTOGRAPHER_NAV"
+      print("GOING TO CARTOGAPHER NAV!")
 
   def cartographer_nav_loop(self):
     transform = self.tf_buffer.lookup_transform("odom",
@@ -121,14 +122,14 @@ class midrow_pure_pursuit:
                                                 # wait for at most 1 second for transform, otherwise throw
                                                 rospy.Duration(1.0))
     if(self.entered_cart_nav_first_time):
-      print("tu smo")
-      self.row_width = abs(self.right_row_enter_point.y - self.this_row_enter_point.y)
-      print("row_width", self.row_width)
       del self.goal_list[:]
       print(self.goal_list)
       msg = PoseStamped()
       msg.header.frame_id = "rslidar"
       if(self.direction == "RIGHT"):
+        self.row_width = abs(self.right_row_enter_point.y - self.this_row_enter_point.y)
+        print("row_width", self.row_width)
+
         msg.pose.position.x = self.this_row_enter_point.x + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y
         msg.pose.position.z = self.right_row_enter_point.z
@@ -189,11 +190,49 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
+        msg.pose.position.x = self.this_row_enter_point.x + 1
+        msg.pose.position.y = self.this_row_enter_point.y + self.row_width
+        msg.pose.position.z = self.this_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, 180 * 3.14159 / 180.0)
+        msg.pose.orientation.w = desired_quaternion[0]
+        msg.pose.orientation.x = desired_quaternion[1]
+        msg.pose.orientation.y = desired_quaternion[2]
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
       if(self.direction == "LEFT"):
-        print("Left not implemented!")
-        """msg.pose.position.x = self.left_row_enter_point.x + 1
-        msg.pose.position.y = self.left_row_enter_point.y + 1
-        msg.pose.position.z = self.left_row_enter_point.z
+        self.row_width = abs(self.left_row_enter_point.y - self.this_row_enter_point.y)
+        print("row_width", self.row_width)
+
+        msg.pose.position.x = self.this_row_enter_point.x + self.initial_forward_movement
+        msg.pose.position.y = self.this_row_enter_point.y
+        msg.pose.position.z = self.right_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, 0 * 3.14159 / 180.0)
+        msg.pose.orientation.w = desired_quaternion[0]
+        msg.pose.orientation.x = desired_quaternion[1]
+        msg.pose.orientation.y = desired_quaternion[2]
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
+        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.y = self.this_row_enter_point.y - 2
+        msg.pose.position.z = self.right_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, -45 * 3.14159 / 180.0)
+        msg.pose.orientation.w = desired_quaternion[0]
+        msg.pose.orientation.x = desired_quaternion[1]
+        msg.pose.orientation.y = desired_quaternion[2]
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
+        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
+        msg.pose.position.y = self.this_row_enter_point.y - 1
+        msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, -90 * 3.14159 / 180.0)
         msg.pose.orientation.w = desired_quaternion[0]
         msg.pose.orientation.x = desired_quaternion[1]
@@ -203,14 +242,42 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.left_row_enter_point.x + 0
-        msg.pose.position.y = self.left_row_enter_point.y
-        msg.pose.position.z = self.left_row_enter_point.z
-        desired_quaternion = get_quaternion_from_euler(0, 0, 180 * 3.14159 / 180.0)
+        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.y = self.this_row_enter_point.y + 0
+        msg.pose.position.z = self.right_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, (-180 + 45) * 3.14159 / 180.0)
         msg.pose.orientation.w = desired_quaternion[0]
         msg.pose.orientation.x = desired_quaternion[1]
         msg.pose.orientation.y = desired_quaternion[2]
-        msg.pose.orientation.z = desired_quaternion[3]"""
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
+        msg.pose.position.x = self.this_row_enter_point.x + 1 + self.initial_forward_movement
+        msg.pose.position.y = self.this_row_enter_point.y - self.row_width
+        msg.pose.position.z = self.this_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, -180 * 3.14159 / 180.0)
+        msg.pose.orientation.w = desired_quaternion[0]
+        msg.pose.orientation.x = desired_quaternion[1]
+        msg.pose.orientation.y = desired_quaternion[2]
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
+        msg.pose.position.x = self.this_row_enter_point.x + 1
+        msg.pose.position.y = self.this_row_enter_point.y - self.row_width
+        msg.pose.position.z = self.this_row_enter_point.z
+        desired_quaternion = get_quaternion_from_euler(0, 0, -180 * 3.14159 / 180.0)
+        msg.pose.orientation.w = desired_quaternion[0]
+        msg.pose.orientation.x = desired_quaternion[1]
+        msg.pose.orientation.y = desired_quaternion[2]
+        msg.pose.orientation.z = desired_quaternion[3]
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
+        msg = transformed_pose
+        self.flattenMsg(msg)
+        self.goal_list.append(deepcopy(msg))
       
       #transformed_pose = tf2_geometry_msgs.do_transform_pose(msg, transform)
       #msg = transformed_pose
@@ -223,10 +290,10 @@ class midrow_pure_pursuit:
     
 
     if(not self.goal_sent):
-      print("sending goal!")
+      print("sending goal!", self.current_nav_goal)
       self.goal_list[self.current_nav_goal].header.stamp = rospy.Time.now()
       msg = self.goal_list[self.current_nav_goal]
-      print(msg)
+      #print(msg)
       self.move_base_goal_pub.publish(msg)
       self.goal_sent = True
 
@@ -240,6 +307,10 @@ class midrow_pure_pursuit:
         elif(self.direction == "LEFT"):
           self.direction = "RIGHT"
         self.state = "MIDROW_NAV"
+
+        print("GOING TO MIDROW NAV!")
+        self.new_pure_pursuit_point_rec = False
+
         self.entered_cart_nav_first_time = True
         self.current_nav_goal = 0
 
