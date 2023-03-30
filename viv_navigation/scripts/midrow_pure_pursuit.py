@@ -131,7 +131,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y + 2
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, 45 * 3.14159 / 180.0)
@@ -143,7 +143,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 1 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y + 1
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, 90 * 3.14159 / 180.0)
@@ -155,7 +155,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y + 0
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, (180 - 45) * 3.14159 / 180.0)
@@ -167,7 +167,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 1 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 0 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y + self.row_width
         msg.pose.position.z = self.this_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, 180 * 3.14159 / 180.0)
@@ -207,7 +207,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y - 2
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, -45 * 3.14159 / 180.0)
@@ -219,7 +219,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 1 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y - 1
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, -90 * 3.14159 / 180.0)
@@ -231,7 +231,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 3 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 2 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y + 0
         msg.pose.position.z = self.right_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, (-180 + 45) * 3.14159 / 180.0)
@@ -243,7 +243,7 @@ class midrow_pure_pursuit:
         msg = transformed_pose
         self.flattenMsg(msg)
         self.goal_list.append(deepcopy(msg))
-        msg.pose.position.x = self.this_row_enter_point.x + 1 + self.initial_forward_movement
+        msg.pose.position.x = self.this_row_enter_point.x + 0 + self.initial_forward_movement
         msg.pose.position.y = self.this_row_enter_point.y - self.row_width
         msg.pose.position.z = self.this_row_enter_point.z
         desired_quaternion = get_quaternion_from_euler(0, 0, -180 * 3.14159 / 180.0)
