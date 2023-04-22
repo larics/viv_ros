@@ -6,6 +6,7 @@
     <arg name="x_location" default="0.0"/>
     <arg name="y_location" default="0.0"/>
     <arg name="z_location" default="0.1"/>
+    <arg name="yaw" default="0.0"/>
     <arg name="sim" default="true"/>
     <arg name="spawn_d435" default="false"/>
 
@@ -22,6 +23,7 @@
             -x $(arg x_location) 
             -y $(arg y_location) 
             -z $(arg z_location) 
+            -Y $(arg yaw)
             -model viv"/>
 
         <rosparam file="$(find viv_control)/config/diff_drive_control.yaml" command="load" />
