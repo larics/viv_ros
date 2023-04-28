@@ -58,17 +58,13 @@ TRAJECTORY_BUILDER.collate_fixed_frame = false
 
 TRAJECTORY_BUILDER_3D.num_accumulated_range_data = 1
 -- important parameters! bigger number -> more trust in IMU
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 50
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight_z = 50
-TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 800
-TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.2
-TRAJECTORY_BUILDER_3D.submaps.low_resolution = 0.4
-TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = 50
-TRAJECTORY_BUILDER_3D.submaps.num_range_data = 200.
-
-TRAJECTORY_BUILDER_3D.voxel_filter_size = 0.10
-
-
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight = 40. --5
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.translation_weight_z = 40. --5
+TRAJECTORY_BUILDER_3D.ceres_scan_matcher.rotation_weight = 5 --4
+TRAJECTORY_BUILDER_3D.submaps.high_resolution = 0.03
+TRAJECTORY_BUILDER_3D.submaps.high_resolution_max_range = 40.
+--TRAJECTORY_BUILDER_3D.submaps.num_range_data = 160.
+TRAJECTORY_BUILDER_3D.submaps.num_range_data = 50.
 TRAJECTORY_BUILDER_3D.high_resolution_adaptive_voxel_filter = {
     max_length = 2.,
     min_num_points = 150,
